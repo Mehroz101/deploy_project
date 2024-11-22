@@ -73,6 +73,9 @@ const SpaceRow = ({
         <td className="total_pending_booking">{totalPending}</td>
         <td className="total_confirmed_booking">{totalConfirmed}</td>
         <td className="price">Rs. {spaceInfo.per_hour}</td>
+        <td className="rating">
+          {spaceInfo.averageRating} <i className="fa-solid fa-star"></i>
+        </td>
         <td>
           <span className={`status ${spaceInfo.state}`}>{spaceInfo.state}</span>
         </td>

@@ -43,7 +43,7 @@
 .manage_space_container .filter_navbar {
   margin: var(--spacing-large) 0;
   border-bottom: 1px solid #dddddd;
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 .manage_space_container .filter_navbar ul {
   display: flex;
@@ -136,7 +136,10 @@ td.title {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+td.rating{
+  color: #00796b;
+  font-weight: 600;
+}
 .status {
   padding: 5px 10px;
   font-size: 12px;

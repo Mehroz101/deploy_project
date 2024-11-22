@@ -5,7 +5,11 @@ const userRoutes = require("./routes/userRoutes");
 const spaceRoutes = require("./routes/spaceRoutes");
 const reservationRoutes = require("./routes/reservationRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
-const { connectDB, checkDatabaseConnection, collectionExists } = require("./config/db");
+const {
+  connectDB,
+  checkDatabaseConnection,
+  collectionExists,
+} = require("./config/db");
 const path = require("path");
 const http = require("http");
 const socketIo = require("socket.io");
@@ -31,12 +35,12 @@ connectDB();
 app.use(checkDatabaseConnection);
 app.set("io", io);
 io.on("connection", (socket) => {
-// console.log("connected")
-// console.log(socket)
+  // console.log("connected")
+  // console.log(socket)
 
   socket.on("disconnect", () => {
-      // Clean up on disconnect
-      // console.log("disconnected");
+    // Clean up on disconnect
+    // console.log("disconnected");
   });
 });
 // Serve static files
@@ -58,7 +62,9 @@ const checkReservationStatus = async (req, res) => {
 
   try {
     const now = new Date();
-    const reservationsConfirmed = await reservation.find({ state: "confirmed" });
+    const reservationsConfirmed = await reservation.find({
+      state: "confirmed",
+    });
     const reservationsReserved = await reservation.find({ state: "reserved" });
     reservationsConfirmed.forEach(async (reservation) => {
       const arrivalTime = new Date(
@@ -120,8 +126,11 @@ app.use("/api/withdraw", paymentRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 // const HOST = '0.0.0.0'; // Change this from 'localhost' to '0.0.0.0'
-
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 // Start the server
-server.listen(PORT, () => {
+server.listen(PORT, (req, res) => {
   console.log(`Server is running on port ${PORT}`);
 });

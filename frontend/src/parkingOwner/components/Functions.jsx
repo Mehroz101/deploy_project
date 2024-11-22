@@ -6,11 +6,15 @@ export const calculatePrice = (hour, price_perhour, price_perday) => {
     // If reservation is for a full day or more
     const days = Math.floor(hours / 24);
     const remainingHours = hours % 24;
-
-    return (days * perDayPrice + remainingHours * perHourPrice).toFixed(2);
+    var totalPrice = days * perDayPrice + remainingHours * perHourPrice;
+    totalPrice = Math.round(totalPrice * 100) / 100;
+    return totalPrice.toFixed(0);
   } else {
+    var totalPrice = hours * perHourPrice;
+    totalPrice = Math.round(totalPrice * 100) / 100;
+    return totalPrice.toFixed(0);
     // If reservation is less than a full day
-    return (hours * perHourPrice).toFixed(0);
+    // return (hours * perHourPrice).toFixed(0);
   }
 };
 export const calculateHours = (

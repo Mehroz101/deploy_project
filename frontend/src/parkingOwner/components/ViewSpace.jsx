@@ -84,7 +84,9 @@ const ViewSpace = () => {
               <i className="fa-solid fa-star"></i>
               <span className="total-reviews">({review.length} reviews)</span>
             </div>
-            <div className="total-booking">{reservationCount} bookings</div>
+            <div className="total-booking">
+              {reservationCount ?? 0} bookings
+            </div>
           </div>
 
           <div className="description-section">
@@ -105,27 +107,32 @@ const ViewSpace = () => {
           </div>
 
           {/* Reviews Section */}
-          <div className="reviews-section">
-            <h3>Reviews</h3>
-            <div className="review-list">
-              {review?.map((review, index) => {
-                return (
-                  <>
-                    <div className="review-item" key={index}>
-                      <h4>{review?.userId?.fName}</h4>
-                      <div className="review-meta">
-                        <span>{review?.rating}</span>
-                        <i className="fa-solid fa-star"></i>
-                        <span>{reviewDateCalculator(review.createdAt)}</span>
-                      </div>
-                      <p>"{review?.reviewMsg}"</p>
-                    </div>
-                  </>
-                );
-              })}
-              {/* Add more review items here */}
+          {review?.length === 0 ? (
+            <div className="reviews-section">
+              <h3>No Reviews</h3>
             </div>
-          </div>
+          ) : (
+            <div className="reviews-section">
+              <h3>Reviews</h3>
+              <div className="review-list">
+                {review?.map((review, index) => {
+                  return (
+                    <>
+                      <div className="review-item" key={index}>
+                        <h4>{review?.userId?.fName}</h4>
+                        <div className="review-meta">
+                          <span>{review?.rating}</span>
+                          <i className="fa-solid fa-star"></i>
+                          <span>{reviewDateCalculator(review.createdAt)}</span>
+                        </div>
+                        <p>"{review?.reviewMsg}"</p>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Features and Pricing */}
@@ -145,11 +152,11 @@ const ViewSpace = () => {
             <h4>Pricing</h4>
             <div className="pricing-item">
               <span>Per Day:</span>
-              <span>${space?.per_day}</span>
+              <span>Rs. {space?.per_day}</span>
             </div>
             <div className="pricing-item">
               <span>Per Hour:</span>
-              <span>${space?.per_hour}</span>
+              <span>Rs. {space?.per_hour}</span>
             </div>
           </div>
         </div>

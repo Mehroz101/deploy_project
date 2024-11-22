@@ -92,7 +92,7 @@ const ViewRequest = () => {
         .filter(
           (reservation) => reservation.spaceId?._id === space?._id
         ).length;
-      
+
       getReservationDetail();
     }
   }, [reservationId, reservation]);
@@ -204,7 +204,7 @@ const ViewRequest = () => {
               <i className="fa-solid fa-wallet"></i>
               <div>
                 <h4>Total Earning</h4>
-                <span>${totalPrice}</span>
+                <span>Rs. {totalPrice}</span>
               </div>
             </div>
             <div className="detail_item payment_method">

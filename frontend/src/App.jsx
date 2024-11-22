@@ -30,7 +30,6 @@ import { ParkingOwnerProvider } from "./context/ReservationContext";
 import { MainAppProvider } from "./context/MainAppContext";
 const AppRoutes = () => {
   const { isAuthenticated } = useAuth();
-
   return (
     <Routes>
       <Route path="/" element={<Home />} />

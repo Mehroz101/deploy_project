@@ -155,9 +155,9 @@ export const ParkingOwnerProvider = ({ children }) => {
     socket.on("reservationUpdated", (data) => {
       if (docdedId === data.userId) {
         addNotification(data.message);
-        getReservationData();
-        getSpaceData();
       }
+      getReservationData();
+      getSpaceData();
     });
 
     socket.on("spaceUpdated", (data) => {

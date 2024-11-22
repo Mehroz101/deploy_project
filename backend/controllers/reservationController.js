@@ -118,8 +118,8 @@ const createCustomReservation = async (req, res) => {
       userId,
       spaces,
       "reservationUpdated",
-      "Your custom reservation has been created.",
-      ""
+      "",
+      "Your custom reservation has been created."
     );
     // //console.log(createReservation)
     return res.status(201).json({

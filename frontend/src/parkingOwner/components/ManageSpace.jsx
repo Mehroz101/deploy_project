@@ -12,23 +12,23 @@ const ManageSpace = () => {
   const [activeFilter, setActiveFilter] = useState("all"); // State to keep track of active filter
   const [searchTerm, setSearchTerm] = useState(""); // Search term for filtering
   // const [reservations, setReservations] = useState([]); // Reservations data
-const {reservation,space,setSpace} = useParkingOwner()
+  const { reservation, space, setSpace } = useParkingOwner();
   // Fetch data from backend
   const spaceRequest = () => {
     // try {
-      // const [reservationsResponse, spacesResponse] = await Promise.all([
-      //   getReservation(),
-      //   getSpace(),
-      // ]);
-      // const spacesArray = spacesResponse.data.data;
-      // setSpaces(spacesArray); // Save the fetched spaces data
-      setFilteredData(space); // Initialize filteredData with all spaces
-      // const reservationcount = reservation.map(
-      //   (reservation) => reservation
-      // );
-      // setReservations(reservationcount); // Save the reservations data
-      // console.log("reservations");
-      // console.log(reservationcount);
+    // const [reservationsResponse, spacesResponse] = await Promise.all([
+    //   getReservation(),
+    //   getSpace(),
+    // ]);
+    // const spacesArray = spacesResponse.data.data;
+    // setSpaces(spacesArray); // Save the fetched spaces data
+    setFilteredData(space); // Initialize filteredData with all spaces
+    // const reservationcount = reservation.map(
+    //   (reservation) => reservation
+    // );
+    // setReservations(reservationcount); // Save the reservations data
+    // console.log("reservations");
+    // console.log(reservationcount);
     // } catch (error) {
     //   console.error("Error fetching data:", error);
     // }
@@ -69,7 +69,6 @@ const {reservation,space,setSpace} = useParkingOwner()
       ); // Filter by status
     }
   };
-  
 
   const handleDeleteSpace = async (spaceId) => {
     await handleDelete(spaceId); // Call delete function
@@ -176,6 +175,7 @@ const {reservation,space,setSpace} = useParkingOwner()
                 <th>Pending</th>
                 <th>Confirmed</th>
                 <th>Price</th>
+                <th>Rating</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>

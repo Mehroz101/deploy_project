@@ -55,7 +55,7 @@
   margin-bottom: 10px;
 }
 .space-address {
-  color: #999;
+  color: var(--secondary);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -94,7 +94,8 @@
 .reviews-section {
   margin-top: 30px;
   max-height: 600px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .review-list {
   display: flex;

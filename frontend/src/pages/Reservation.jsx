@@ -48,7 +48,10 @@ const Reservation = () => {
       ) {
         return notify("warning", "All fields are required");
       }
-      await handlePaySubmit();
+      const responsePay = await handlePaySubmit();
+      if (responsePay === false) {
+        return notify("warning", "Please enter valid card details");
+      }
       const response = await handleSubmit();
       if (response === 201) {
         navigate("/profile/booking");
@@ -102,6 +105,7 @@ const Reservation = () => {
     } catch (error) {
       setLoading(false);
       console.log(error.message);
+      return false;
     }
   };
 
@@ -279,7 +283,7 @@ const Reservation = () => {
                       <div className="review-meta">
                         <span>{review?.rating}</span>
                         <i className="fa-solid fa-star"></i>
-                        <span>{reviewDateCalculator(review)}</span>
+                        <span>{reviewDateCalculator(review.createdAt)}</span>
                       </div>
                       <p>"{review?.reviewMsg}"</p>
                     </div>

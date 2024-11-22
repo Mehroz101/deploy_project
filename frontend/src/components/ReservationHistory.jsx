@@ -25,9 +25,8 @@ const ReservationHistory = () => {
   const handleSubmit = async () => {
     //console.log(review);
     const response = await postReview(review);
-    getreservationData()
+    getreservationData();
     setReviewBox(false);
-
   };
   const hidePopupFun = () => {
     setReviewBox(false);
@@ -153,11 +152,10 @@ const ReservationHistory = () => {
                     </span>
                   </td>
                   <td>
-                    {item.state === "confirmed" ||
-                      (item.state === "reserved" && <button>Direction</button>)}
+                    {/* {item.state === "confirmed" ||
+                      (item.state === "reserved" && <button>Direction</button>)} */}
                     {item.state === "pending" && (
                       <>
-                        <button>Direction</button>
                         <button
                           onClick={() => handleCancelReservation(item?._id)}
                         >
