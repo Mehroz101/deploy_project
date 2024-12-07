@@ -71,7 +71,6 @@ const AppRoutes = () => {
           }
         />
       </Route>
-
       <Route path="/reservation/:spaceId" element={<Reservation />} />
       <Route path="/listyourspace" element={<ListyourSpace />} />
 
